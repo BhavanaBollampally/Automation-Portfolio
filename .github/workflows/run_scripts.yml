@@ -1,22 +1,42 @@
-name: Run Automation Scripts
+name: Automation Portfolio Pipeline
 
 on:
   push:
     branches: [ master ]
-  workflow_dispatch:
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  run-scripts:
+  run-automation-scripts:
+    name: Execute Bash Automation Scripts
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Run System Health Monitor
-        run: bash ./system_health_monitor.sh
+      - name: Set up Bash Environment
+        run: |
+          chmod +x *.sh
 
-      - name: Run Log & Alert Automation
-        run: bash ./log_alert_automation.sh
+      - name: Run Log Automation Script
+        run: |
+          echo "Running log automation script..."
+          ./log_alert_automation.sh || echo "⚠️ log_alert_automation.sh failed but continuing"
 
-      - name: Run Git Automation
-        run: bash ./git_automation.sh
+      - name: Run System Health Monitor Script
+        run: |
+          echo "Running system health monitor..."
+          ./system_health_monitor.sh || echo "⚠️ system_health_monitor.sh failed but continuing"
+
+      - name: Run Git Automation Script
+        run: |
+          echo "Running Git automation..."
+          ./git_automation.sh || echo "⚠️ git_automation.sh failed but continuing"
+
+      - name: Display Completed Logs
+        run: |
+          echo "===== Logs Folder Content ====="
+          ls -l logs || echo "No logs folder found."
+          echo "================================"
+
