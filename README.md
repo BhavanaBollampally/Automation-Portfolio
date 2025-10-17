@@ -68,3 +68,12 @@ Automation-Portfolio/
 ├── git_automation.sh  
 ├── README.md  
 └── logs/       # Created by log_alert_automation.sh
+
+---
+
+## ⚙️ Workflow Summary
+This repository includes a CI pipeline using **GitHub Actions**.  
+Each time new code is pushed:
+- The workflow automatically runs all Bash scripts.
+- Log outputs are generated and uploaded as downloadable artifacts.
+- This demonstrates end-to-end automation, monitoring, and CI workflow understanding.
