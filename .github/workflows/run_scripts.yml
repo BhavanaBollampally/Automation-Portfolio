@@ -39,4 +39,16 @@ jobs:
           echo "===== Logs Folder Content ====="
           ls -l logs || echo "No logs folder found."
           echo "================================"
+      - name: Display Completed Logs
+        run: |
+          echo "===== Logs Folder Content ====="
+          ls -l logs || echo "No logs folder found."
+          echo "================================"
+
+      - name: Upload Logs as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: automation-logs
+          path: logs/
+
 
