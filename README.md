@@ -3,8 +3,6 @@
 This repository contains a collection of **Bash automation scripts** showcasing my DevOps and scripting skills.  
 The scripts demonstrate **system monitoring, log automation, and Git workflow automation**.  
 
-> 💡 These scripts are part of my hands-on learning journey in Bash and DevOps. Each script was manually created, tested, and debugged, reflecting real-world automation scenarios.
-
 ---
 
 ## 📂 Scripts Overview
